@@ -1,6 +1,9 @@
 # stream_guide
 
-A new Flutter project.
+Simple Beginners Guide to Streams.
+1. Single Subscription Stream
+2. Broadcast Stream
+3. Continues Streams
 
 ## Getting Started
 
