@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 
@@ -27,11 +28,9 @@ class _MyAppState extends State<MyApp> {
               MaterialButton(
                 color: Colors.yellow,
                 child: Text('Subscribe'),
-                onPressed: () {
-                  // Stream the controller manager
-                  Stream stream = controller.stream;
-                  streamSubscription = stream.listen((value) {
-                    print('Value from the controller: $value');
+                onPressed: () async {
+                  getDelayedRandomValue().listen((value) {
+                    print('Value from manualStream: $value}');
                   });
                 },
               ),
@@ -54,5 +53,14 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
     );
+  }
+
+  Stream<double> getDelayedRandomValue() async* {
+    Random random = Random();
+
+    while (true) {
+      await Future.delayed(Duration(seconds: 1));
+      yield random.nextDouble();
+    }
   }
 }
